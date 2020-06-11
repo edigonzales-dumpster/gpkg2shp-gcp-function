@@ -24,12 +24,12 @@ import com.google.cloud.functions.HttpFunction;
 import com.google.cloud.functions.HttpRequest;
 import com.google.cloud.functions.HttpRequest.HttpPart;
 
-import ch.interlis.iox.IoxEvent;
-import ch.interlis.iox.ObjectEvent;
-import ch.interlis.iox_j.EndBasketEvent;
-import ch.interlis.iox_j.EndTransferEvent;
-import ch.interlis.ioxwkf.gpkg.GeoPackageReader;
-import ch.interlis.ioxwkf.shp.ShapeWriter;
+//import ch.interlis.iox.IoxEvent;
+//import ch.interlis.iox.ObjectEvent;
+//import ch.interlis.iox_j.EndBasketEvent;
+//import ch.interlis.iox_j.EndTransferEvent;
+//import ch.interlis.ioxwkf.gpkg.GeoPackageReader;
+//import ch.interlis.ioxwkf.shp.ShapeWriter;
 
 import com.google.cloud.functions.HttpResponse;
 
