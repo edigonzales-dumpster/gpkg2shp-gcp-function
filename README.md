@@ -31,7 +31,7 @@ curl -F "file=@./src/test/data/ch.so.agi.av-gb-administrative-einteilung.gpkg" h
 -> Probleme mit http2 und nicht mehr erlaubten Header?
 
 ```
-curl --http1.1 -v -F "file=@./src/test/data/ch.so.agi.av-gb-administrative-einteilung.gpkg" https://europe-west1-gpkg2shpfn.cloudfunctions.net/gpkg2shp > fubar.gpkg
+curl --http1.1 -v -F "file=@./src/test/data/ch.so.agi.av-gb-administrative-einteilung.gpkg" https://europe-west1-gpkg2shpfn.cloudfunctions.net/gpkg2shp > fubar.zip
 ```
 
 
