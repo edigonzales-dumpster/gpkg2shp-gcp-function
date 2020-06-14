@@ -37,7 +37,7 @@ curl --http1.1 -v -F "file=@./src/test/data/ch.so.agi.av-gb-administrative-einte
 
 ## IAM
 - Service Account erstellen
-- Service Account die Role Cloud Functions Invoker zuweisen.
+- Service Account die Role "Cloud Functions Invoker" zuweisen.
 - Unter Service Accounts bei Dotted Hamburger (Actions) "Create Keys"
 - Service Account aktivieren: gcloud auth activate-service-account --key-file=/Users/stefan/Downloads/gpkg2shpfn-808f61d8b4a5.json
 - Token für Funktion-Aufruf auslesen: gcloud auth print-identity-token gpkg2shp-user@gpkg2shpfn.iam.gserviceaccount.com

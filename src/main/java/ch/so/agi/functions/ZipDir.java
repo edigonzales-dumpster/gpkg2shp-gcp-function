@@ -10,7 +10,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class ZipDir extends SimpleFileVisitor<Path> {
-    private static ZipOutputStream zos;
+    private ZipOutputStream zos;
 
     private Path sourceDir;
     
