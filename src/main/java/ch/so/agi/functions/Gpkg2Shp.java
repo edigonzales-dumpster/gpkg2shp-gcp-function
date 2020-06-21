@@ -105,7 +105,7 @@ public class Gpkg2Shp implements HttpFunction {
         ZipOutputStream zos = new ZipOutputStream(new FileOutputStream(zipFileName));
         Files.walkFileTree(tmpFolder.toPath(), new ZipDir(tmpFolder.toPath(), zos));
         zos.close();
-
+        
         // Send output back to client.
         try (OutputStream out = response.getOutputStream()) {
             response.setContentType("application/zip");

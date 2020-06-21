@@ -1,5 +1,13 @@
 # gpkg2shp-gcp-function
 
+## Todo
+- `sogis-gdi-prod` Projekt
+- Tests
+- Pipeline (inkl. Deployment)
+- DXF
+- CSV
+
+## Developing
 ```
 mvn archetype:generate -DgroupId=ch.so.agi -DartifactId=gpkg2shp-gcp-function -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.4 -DinteractiveMode=false
 ```
