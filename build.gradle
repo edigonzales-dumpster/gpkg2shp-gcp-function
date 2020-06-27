@@ -24,19 +24,15 @@ repositories {
 configurations {
     invoker
 
-    // TODO: not working !?
+    // TODO: Funktioniert nur ohne 'module' !?
     compile {
-        exclude group: 'javax.media', module:'jai-core'
-        exclude group: 'com.sun.media', module:'jai-codec'
+        exclude group: 'javax.media' //, module:'jai-core'
+        exclude group: 'com.sun.media' //, module:'jai-codec'
     }
-
 }
 
 dependencies {
-    compile('ch.interlis:iox-wkf:1.1.20') {
-        exclude group: 'javax.media', module: 'jai-core'
-        exclude group: 'com.sun.media', module: 'jai-codec'
-    }
+    compile 'ch.interlis:iox-wkf:1.1.20' 
     compile 'com.google.cloud.functions:functions-framework-api:1.0.1'
     invoker 'com.google.cloud.functions.invoker:java-function-invoker:1.0.0-beta1'
     
