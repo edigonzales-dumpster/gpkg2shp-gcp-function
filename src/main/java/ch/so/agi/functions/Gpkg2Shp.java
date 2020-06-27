@@ -26,6 +26,7 @@ import com.google.cloud.functions.HttpRequest.HttpPart;
 import com.google.cloud.functions.HttpResponse;
 
 import ch.interlis.iox.IoxEvent;
+import ch.interlis.iox.IoxException;
 import ch.interlis.iox.ObjectEvent;
 import ch.interlis.iox_j.EndBasketEvent;
 import ch.interlis.iox_j.EndTransferEvent;
@@ -36,7 +37,7 @@ public class Gpkg2Shp implements HttpFunction {
     private static final Logger logger = Logger.getLogger(Gpkg2Shp.class.getName());
 
     @Override
-    public void service(HttpRequest request, HttpResponse response) throws Exception {        
+    public void service(HttpRequest request, HttpResponse response) throws IoxException, IOException {        
         // Create folder for the shape files.
         File tmpFolder = Files.createTempDirectory("gpkg2shpws-").toFile();
         if (!tmpFolder.exists()) {
@@ -46,9 +47,9 @@ public class Gpkg2Shp implements HttpFunction {
         
         // Copy uploaded gpkg file to temp folder.
         HttpPart fileHttpPart = request.getParts().get("file");
-        String uploadedFileName = fileHttpPart.getFileName().orElse("data.gpkg");
+        String uploadedFileName = fileHttpPart.getFileName().orElse("data.gpkg");        
         InputStream is = fileHttpPart.getInputStream();
-        
+
         File uploadedFile = Paths.get(tmpFolder.getAbsolutePath(), uploadedFileName).toFile();
         java.nio.file.Files.copy(
                 is, 

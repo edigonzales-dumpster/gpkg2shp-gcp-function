@@ -6,6 +6,8 @@
 - Pipeline (inkl. Deployment)
 - DXF
 - CSV
+- Beispiel HTML/JS-Client (nginx?)
+- Firebase
 
 ## Developing
 ```
