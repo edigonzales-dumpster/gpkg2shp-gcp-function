@@ -13,7 +13,6 @@ import java.util.Map;
 
 import org.geotools.data.FileDataStore;
 import org.geotools.data.FileDataStoreFinder;
-import org.geotools.data.simple.SimpleFeatureIterator;
 import org.geotools.data.simple.SimpleFeatureSource;
 import org.junit.Before;
 import org.junit.Rule;

@@ -7,7 +7,7 @@
 - DXF
 - CSV
 - Beispiel HTML/JS-Client (nginx?)
-- Firebase
+- Firebase (https://cloud.google.com/functions/docs/securing/authenticating / )
 
 ## Developing
 ```
@@ -58,3 +58,7 @@ curl --http1.1 -v -F "file=@./src/test/data/ch.so.agi.av-gb-administrative-einte
 - https://github.com/GoogleCloudPlatform/functions-framework-java/blob/master/invoker/function-maven-plugin/src/main/java/com/google/cloud/functions/plugin/DeployFunction.java
 - https://stackoverflow.com/questions/57122047/google-cloud-function-not-created-with-private-access
 - https://cloud.google.com/functions/docs/securing/managing-access-iam
+
+
+## Gradle
+./gradlew runFunction -PrunFunction.target=ch.so.agi.functions.Gpkg2Shp -PrunFunction.port=8080
