@@ -16,15 +16,18 @@ import io.restassured.RestAssured;
 public class Gpkg2ShpIntegrationTest {
 
     private static final String newline = System.getProperty("line.separator");
-    private StringBuffer stdout = new StringBuffer();
-    private StringBuffer stderr = new StringBuffer();
+    private static StringBuffer stdout = new StringBuffer();
+    private static StringBuffer stderr = new StringBuffer();
     
-    private Process p;
+    private static Process p;
     
     // TODO: Parametrisierbar und in Einklang bringen mit 'runFunction'
     // Task Properties?
+    // Ob das mit static sauber ist? Im Prinzip kann ich den Server auch vor
+    // jedem Test neu starten und anschliessen beenden, d.h. before/after 
+    // verwenden.
     @BeforeClass
-    public void setup() throws IOException, InterruptedException {
+    public static void setup() throws IOException, InterruptedException {
         RestAssured.port = Integer.valueOf(8080);
         RestAssured.baseURI = "http://localhost";
 
@@ -38,7 +41,7 @@ public class Gpkg2ShpIntegrationTest {
     }
     
     @AfterClass
-    public void teardown() {
+    public static void teardown() {
         p.destroy();
     }
     
