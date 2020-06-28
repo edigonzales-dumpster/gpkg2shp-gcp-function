@@ -11,13 +11,13 @@ repositories {
     maven {
         url "http://maven.geo-solutions.it"
     }
-    jcenter()
     maven {
         url "http://jars.interlis.ch"
     }
     maven {
         url "https://dl.bintray.com/sogis/iox-wkf/"
     }
+    jcenter()    
     mavenCentral()
 }
 
