@@ -2,12 +2,24 @@
 
 ## Todo
 - `sogis-gdi-prod` Projekt
-- Tests
+- Tests (unit=done)
 - Pipeline (inkl. Deployment)
 - DXF
 - CSV
 - Beispiel HTML/JS-Client (nginx?)
 - Firebase (https://cloud.google.com/functions/docs/securing/authenticating / )
+
+## Integration-Tests
+Achtung: https://github.com/unbroken-dome/gradle-testsets-plugin#eclipse
+
+```
+java -jar libs/java-function-invoker-1.0.0-beta1.jar --classpath 'build/libs/gpkg2shp-gcp-function-1.0.LOCALBUILD-all.jar' --target ch.so.agi.functions.Gpkg2Shp
+
+curl -F "file=@./src/test/data/ch.so.agi.av-gb-administrative-einteilung.gpkg" localhost:8080 > fubar.zip
+```
+```
+./gradlew clean build shadowJar integrationTest
+```
 
 ## Developing
 ```
@@ -19,7 +31,7 @@ mvn function:run
 ```
 
 ```
-curl -F "file=@./src/test/data/ch.so.agi.av-gb-administrative-einteilung.gpkg" localhost:8080
+curl -F "file=@./src/test/data/ch.so.agi.av-gb-administrative-einteilung.gpkg" localhost:8080 > fubar.zip
 ```
 
 ```

@@ -1,5 +1,7 @@
 plugins {
     id 'java-library'
+    id 'org.unbroken-dome.test-sets' version '3.0.1'
+    id 'com.github.johnrengelman.shadow' version '6.0.0'
 }
 
 apply from: "$rootDir/gradle/versioning.gradle"
@@ -21,6 +23,10 @@ repositories {
     mavenCentral()
 }
 
+testSets {
+    integrationTest { dirName = 'integration-test' }
+}
+
 configurations {
     invoker
 
@@ -29,17 +35,34 @@ configurations {
         exclude group: 'javax.media' //, module:'jai-core'
         exclude group: 'com.sun.media' //, module:'jai-codec'
     }
+    
+    //integrationTestCompile.extendsFrom testCompile
+    //integrationTestRuntime.extendsFrom testRuntime    
 }
 
+/*
+sourceSets {
+
+    integrationTest {
+        java.srcDir file('src/integration-test/java')
+        resources.srcDir file('src/integration-test/resources')
+        compileClasspath += sourceSets.main.output + sourceSets.test.output + configurations.testRuntime
+        runtimeClasspath += sourceSets.main.output + sourceSets.test.output + configurations.testRuntime
+    }  
+}
+*/  
+
 dependencies {
-    compile 'ch.interlis:iox-wkf:1.1.20' 
-    compile 'com.google.cloud.functions:functions-framework-api:1.0.1'
+    implementation 'ch.interlis:iox-wkf:1.1.20' 
+    implementation 'com.google.cloud.functions:functions-framework-api:1.0.1'
     invoker 'com.google.cloud.functions.invoker:java-function-invoker:1.0.0-beta1'
     
-    testCompile 'junit:junit:4.13'
-    testCompile group: 'org.mockito', name: 'mockito-core', version: '3.3.3' 
-    testCompile group: 'org.geotools', name: 'gt-shapefile', version: '23.1' 
-    testCompile group: 'org.geotools', name: 'gt-epsg-hsql', version: '23.1'
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'org.mockito:mockito-core:3.3.3' 
+    testImplementation 'org.geotools:gt-shapefile:23.1' 
+    testImplementation 'org.geotools:gt-epsg-hsql:23.1'
+    
+    integrationTestImplementation 'io.rest-assured:rest-assured:4.3.0'
 }
 
 tasks.register("runFunction", JavaExec) {
@@ -54,3 +77,19 @@ tasks.register("runFunction", JavaExec) {
         args('--classpath', files(configurations.runtimeClasspath, sourceSets.main.output).asPath)
     }
 }
+
+shadowJar {
+   baseName = 'gpkg2shp-gcp-function'
+   classifier = 'all'
+   archiveVersion = ''
+}
+
+
+/*
+task integrationTest(type: Test) {
+    group 'Verification'
+    description 'Runs the integration tests.'
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath
+}
+*/
