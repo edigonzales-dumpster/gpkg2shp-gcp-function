@@ -1,6 +1,7 @@
 package ch.so.agi.functions;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -46,11 +47,13 @@ public class Gpkg2ShpIntegrationTest {
     }
     
     @Test
-    public void fubar() {
+    public void gpkg2shp_Ok() {
         System.out.println("fubar");
         System.out.println(RestAssured.port);
         System.out.println(RestAssured.baseURI);
         
+		File file = new File("src/test/data/ch.so.agi.av-gb-administrative-einteilung.gpkg");
+
         
 //        System.out.println(String.format("Here is the standard output of the command [%s]:\n", command));
         System.out.print(stdout);
