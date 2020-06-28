@@ -35,22 +35,7 @@ configurations {
         exclude group: 'javax.media' //, module:'jai-core'
         exclude group: 'com.sun.media' //, module:'jai-codec'
     }
-    
-    //integrationTestCompile.extendsFrom testCompile
-    //integrationTestRuntime.extendsFrom testRuntime    
 }
-
-/*
-sourceSets {
-
-    integrationTest {
-        java.srcDir file('src/integration-test/java')
-        resources.srcDir file('src/integration-test/resources')
-        compileClasspath += sourceSets.main.output + sourceSets.test.output + configurations.testRuntime
-        runtimeClasspath += sourceSets.main.output + sourceSets.test.output + configurations.testRuntime
-    }  
-}
-*/  
 
 dependencies {
     implementation 'ch.interlis:iox-wkf:1.1.20' 
@@ -83,13 +68,3 @@ shadowJar {
    classifier = 'all'
    archiveVersion = ''
 }
-
-
-/*
-task integrationTest(type: Test) {
-    group 'Verification'
-    description 'Runs the integration tests.'
-    testClassesDirs = sourceSets.integrationTest.output.classesDirs
-    classpath = sourceSets.integrationTest.runtimeClasspath
-}
-*/
